@@ -1,0 +1,6 @@
+console.log("Website Ready 🎶");
+
+// contoh animasi scroll
+window.addEventListener("scroll", () => {
+    console.log("scrolling...");
+});

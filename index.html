@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perantaranya</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="pe logo.png">
+
+
+</head>
+<body class="font-sans text-gray-800">
+
+<script src="navbar.js"></script>
+
+
+
+
+<!-- HERO SLIDER -->
+<section class="relative w-full h-[90vh] overflow-hidden">
+
+    <div id="slider" class="w-full h-full relative">
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-100 transition-all duration-700"
+             style="background-image:url('Perantaranya.jpg')"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-100 transition-all duration-700"
+             style="background-image:url('hero1.JPG')"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-all duration-700"
+             style="background-image:url('hero2.JPG')"></div>
+        <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-all duration-700"
+             style="background-image:url('hero3.JPG')"></div>
+
+        <div class="absolute inset-0 bg-black/55"></div>
+
+        <div class="absolute inset-0 flex items-center px-10 md:px-24 text-white">
+            <div class="max-w-xl">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight drop-shadow-xl">
+                    Selamat datang,<br> di website <span class="text-red-300 font-extrabold">Perantaranya</span>
+                </h1>
+
+                <p class="mt-4 opacity-95">Perantaranya terbentuk di Kelapa Gading Tahun 2019 yang beranggotakan Fabio Ihsan Laksmana(Vocal), 
+                    Joey Transpose (Lead Guitar), Maitreya Yamin(Rythm Guitar), dan Rendhika Rivaldi(Bass).....</p>
+
+                <!-- Tombol NOW OPEN HALAMAN STORY -->
+                <a href="visit.html">
+                    <button class="mt-6 bg-[#6A0000] px-6 py-2 rounded-md hover:bg-red-900">
+                        VISIT MORE
+                    </button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <button id="prev" class="absolute left-5 top-1/2 -translate-y-1/2 text-3xl text-white hover:scale-125">❮</button>
+    <button id="next" class="absolute right-5 top-1/2 -translate-y-1/2 text-3xl text-white hover:scale-125">❯</button>
+
+</section>
+
+
+
+<!-- GALLERY -->
+<section class="py-16 bg-[#2c2929] text-white text-center">
+    <h2 class="text-3xl font-semibold tracking-wider mb-10">GALLERY</h2>
+
+    <div class="relative w-full max-w-[1100px] mx-auto overflow-hidden">
+
+        <div id="gallerySlider" class="flex gap-6 transition-all duration-500">
+
+            <!-- Video 1 -->
+            <iframe 
+                src="https://www.youtube.com/embed/pj3AnEgizvY"
+                class="w-[300px] h-[200px] rounded-lg shadow-lg"
+                frameborder="0" allowfullscreen>
+            </iframe>
+
+            <!-- Video 2 -->
+            <iframe 
+                src="https://www.youtube.com/embed/93wAMrKi0eM"
+                class="w-[300px] h-[200px] rounded-lg shadow-lg"
+                frameborder="0" allowfullscreen>
+            </iframe>
+
+            <!-- Video 3 -->
+            <iframe 
+                src="https://www.youtube.com/embed/GzyOdA5PnBw"
+                class="w-[300px] h-[200px] rounded-lg shadow-lg"
+                frameborder="0" allowfullscreen>
+            </iframe>
+
+            <!-- Video 4 -->
+            <iframe 
+                src="https://www.youtube.com/embed/ulAiS5KxoKU"
+                class="w-[300px] h-[200px] rounded-lg shadow-lg"
+                frameborder="0" allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <button id="galleryPrev" class="absolute left-0 top-1/2 -translate-y-1/2 text-4xl px-2">❮</button>
+        <button id="galleryNext" class="absolute right-0 top-1/2 -translate-y-1/2 text-4xl px-2">❯</button>
+
+    </div>
+</section>
+
+
+
+<!-- DISCOGRAPHY -->
+<section class="py-20 text-center">
+    <h2 class="text-2xl font-bold tracking-wide">DISCOGRAPHY</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-12 place-items-center">
+
+        <a href="/album/lumenhistoire.html" class="group">
+            <img src="lum.jpeg" class="w-40 h-40 rounded shadow-md object-cover group-hover:scale-105 transition">
+            <p class="mt-3 font-semibold">Lumen Histoire</p><p class="text-sm opacity-70">2022</p>
+        </a>
+
+        <a href="/album/v1983.html" class="group">
+            <img src="lum.jpeg" class="w-40 h-40 rounded shadow-md object-cover group-hover:scale-105 transition">
+            <p class="mt-3 font-semibold">1983</p><p class="text-sm opacity-70">2024</p>
+        </a>
+
+        <a href="/album/t3.html" class="group">
+            <img src="lum.jpeg" class="w-40 h-40 rounded shadow-md object-cover group-hover:scale-105 transition">
+            <p class="mt-3 font-semibold">Things Take Time</p><p class="text-sm opacity-70">2021</p>
+        </a>
+
+        <a href="/album/thissong.html" class="group">
+            <img src="lum.jpeg" class="w-40 h-40 rounded shadow-md object-cover group-hover:scale-105 transition">
+            <p class="mt-3 font-semibold">This Song</p><p class="text-sm opacity-70">2022</p>
+        </a>
+
+        <a href="/album/whatfor.html" class="group">
+            <img src="lum.jpeg" class="w-40 h-40 rounded shadow-md object-cover group-hover:scale-105 transition">
+            <p class="mt-3 font-semibold">What For</p><p class="text-sm opacity-70">2021</p>
+        </a>
+
+        <a href="/album/thoughtofyou.html" class="group">
+            <img src="lum.jpeg" class="w-40 h-40 rounded shadow-md object-cover group-hover:scale-105 transition">
+            <p class="mt-3 font-semibold">Thought Of You</p><p class="text-sm opacity-70">2019</p>
+        </a>
+
+    </div>
+</section>
+<script src="footer.js"></script>
+
+<!-- SCRIPT SLIDER -->
+<script>
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(i){
+    slides.forEach(s => s.style.opacity = "0");
+    slides[i].style.opacity = "1";
+}
+document.getElementById("next").onclick = () => { index=(index+1)%slides.length; showSlide(index); }
+document.getElementById("prev").onclick = () => { index=(index-1+slides.length)%slides.length; showSlide(index); }
+setInterval(()=>{ index=(index+1)%slides.length; showSlide(index); },5000);
+</script>
+
+<script>
+let gIndex = 0;
+function updateGallery(){
+    document.getElementById("gallerySlider").style.transform = `translateX(-${gIndex * 330}px)`;
+}
+document.getElementById("galleryNext").onclick = () => {
+    const items=document.querySelectorAll("#gallerySlider iframe").length;
+    gIndex=(gIndex < items-3)? gIndex+1 : 0;
+    updateGallery();
+}
+document.getElementById("galleryPrev").onclick = () => {
+    const items=document.querySelectorAll("#gallerySlider iframe").length;
+    gIndex=(gIndex>0)? gIndex-1 : items-3;
+    updateGallery();
+}
+</script>
+
+</body>
+</html>
