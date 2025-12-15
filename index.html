@@ -8,6 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="pe logo.png">
 
+    <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+    </style>
+
 
 </head>
 <body class="font-sans text-gray-800">
@@ -21,14 +26,24 @@
 <section class="relative w-full h-[90vh] overflow-hidden">
 
     <div id="slider" class="w-full h-full relative">
-        <div class="slide absolute inset-0 bg-cover bg-center opacity-100 transition-all duration-700"
-             style="background-image:url('Perantaranya.jpg')"></div>
-        <div class="slide absolute inset-0 bg-cover bg-center opacity-100 transition-all duration-700"
-             style="background-image:url('hero1.JPG')"></div>
-        <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-all duration-700"
-             style="background-image:url('hero2.JPG')"></div>
-        <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-all duration-700"
-             style="background-image:url('hero3.JPG')"></div>
+    <div class="slide absolute inset-0 bg-cover bg-top opacity-100 transition-opacity duration-700"
+         style="background-image:url('Perantaranya.jpg')"></div>
+
+    <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700"
+         style="background-image:url('hero1.JPG')"></div>
+
+    <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700"
+         style="background-image:url('hero2.JPG')"></div>
+
+    <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700"
+         style="background-image:url('hero3.JPG')"></div>
+
+    <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700"
+         style="background-image:url('Mai.JPG')"></div> 
+
+    <div class="slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-700"
+         style="background-image:url('Veg.JPG')"></div>    
+
 
         <div class="absolute inset-0 bg-black/55"></div>
 
@@ -63,45 +78,41 @@
 <section class="py-16 bg-[#2c2929] text-white text-center">
     <h2 class="text-3xl font-semibold tracking-wider mb-10">GALLERY</h2>
 
-    <div class="relative w-full max-w-[1100px] mx-auto overflow-hidden">
+    <div id="gallery"
+         class="w-full max-w-[1100px] mx-auto overflow-x-scroll px-4 no-scrollbar cursor-grab active:cursor-grabbing"
+         style="-webkit-overflow-scrolling: touch;">
 
-        <div id="gallerySlider" class="flex gap-6 transition-all duration-500">
+        <div class="flex gap-6 flex-nowrap">
 
-            <!-- Video 1 -->
             <iframe 
                 src="https://www.youtube.com/embed/pj3AnEgizvY"
-                class="w-[300px] h-[200px] rounded-lg shadow-lg"
-                frameborder="0" allowfullscreen>
+                class="w-[300px] h-[200px] rounded-lg shadow-lg flex-shrink-0 pointer-events-none"
+                allowfullscreen>
             </iframe>
 
-            <!-- Video 2 -->
             <iframe 
                 src="https://www.youtube.com/embed/93wAMrKi0eM"
-                class="w-[300px] h-[200px] rounded-lg shadow-lg"
-                frameborder="0" allowfullscreen>
+                class="w-[300px] h-[200px] rounded-lg shadow-lg flex-shrink-0 pointer-events-none"
+                allowfullscreen>
             </iframe>
 
-            <!-- Video 3 -->
             <iframe 
                 src="https://www.youtube.com/embed/GzyOdA5PnBw"
-                class="w-[300px] h-[200px] rounded-lg shadow-lg"
-                frameborder="0" allowfullscreen>
+                class="w-[300px] h-[200px] rounded-lg shadow-lg flex-shrink-0 pointer-events-none"
+                allowfullscreen>
             </iframe>
 
-            <!-- Video 4 -->
             <iframe 
                 src="https://www.youtube.com/embed/ulAiS5KxoKU"
-                class="w-[300px] h-[200px] rounded-lg shadow-lg"
-                frameborder="0" allowfullscreen>
+                class="w-[300px] h-[200px] rounded-lg shadow-lg flex-shrink-0 pointer-events-none"
+                allowfullscreen>
             </iframe>
 
         </div>
-
-        <button id="galleryPrev" class="absolute left-0 top-1/2 -translate-y-1/2 text-4xl px-2">❮</button>
-        <button id="galleryNext" class="absolute right-0 top-1/2 -translate-y-1/2 text-4xl px-2">❯</button>
-
     </div>
 </section>
+
+
 
 
 
@@ -147,34 +158,72 @@
 
 <!-- SCRIPT SLIDER -->
 <script>
+const gallery = document.getElementById("gallery");
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+// Desktop drag
+gallery.addEventListener("mousedown", (e) => {
+  isDown = true;
+  startX = e.pageX - gallery.offsetLeft;
+  scrollLeft = gallery.scrollLeft;
+});
+
+gallery.addEventListener("mouseleave", () => isDown = false);
+gallery.addEventListener("mouseup", () => isDown = false);
+
+gallery.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - gallery.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  gallery.scrollLeft = scrollLeft - walk;
+});
+
+// Mobile swipe
+gallery.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].pageX;
+  scrollLeft = gallery.scrollLeft;
+});
+
+gallery.addEventListener("touchmove", (e) => {
+  const x = e.touches[0].pageX;
+  const walk = (x - startX) * 1.5;
+  gallery.scrollLeft = scrollLeft - walk;
+});
+</script>
+
+<script>
 let index = 0;
 const slides = document.querySelectorAll(".slide");
 
 function showSlide(i){
-    slides.forEach(s => s.style.opacity = "0");
-    slides[i].style.opacity = "1";
+  slides.forEach(slide => slide.style.opacity = "0");
+  slides[i].style.opacity = "1";
 }
-document.getElementById("next").onclick = () => { index=(index+1)%slides.length; showSlide(index); }
-document.getElementById("prev").onclick = () => { index=(index-1+slides.length)%slides.length; showSlide(index); }
-setInterval(()=>{ index=(index+1)%slides.length; showSlide(index); },5000);
+
+// set slide awal
+showSlide(index);
+
+document.getElementById("next").onclick = () => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+};
+
+document.getElementById("prev").onclick = () => {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+};
+
+// auto slide
+setInterval(() => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}, 5000);
 </script>
 
-<script>
-let gIndex = 0;
-function updateGallery(){
-    document.getElementById("gallerySlider").style.transform = `translateX(-${gIndex * 330}px)`;
-}
-document.getElementById("galleryNext").onclick = () => {
-    const items=document.querySelectorAll("#gallerySlider iframe").length;
-    gIndex=(gIndex < items-3)? gIndex+1 : 0;
-    updateGallery();
-}
-document.getElementById("galleryPrev").onclick = () => {
-    const items=document.querySelectorAll("#gallerySlider iframe").length;
-    gIndex=(gIndex>0)? gIndex-1 : items-3;
-    updateGallery();
-}
-</script>
 
 </body>
 </html>
